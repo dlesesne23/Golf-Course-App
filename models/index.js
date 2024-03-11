@@ -9,7 +9,7 @@ db.on('connected', function () {
 })
 
 module.exports = {
-    Golf: require('./golf'),
+    Courses: require('./Course'),
     User: require('./user'),
-    seedGolf: require('.seed')
+    seedGolf: require('./seed')
 }
