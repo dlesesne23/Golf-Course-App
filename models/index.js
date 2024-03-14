@@ -1,15 +1,8 @@
-require('dotenv').config()
-const mongoose = require('mongoose')
+const express = require('express')
+const router = express.Router()
+const coursesController = require('../controllers/coursesController')
+const userController = require('../controllers/userController')
 
-mongoose.connect(process.env.MONGODBURI)
-const db = mongoose.connection
+router.get('/', coursesController.getCourses)
 
-db.on('connected', function () {
-    console.log(`Connected to MongoDB ${db.name} at ${db.host}`)
-})
-
-module.exports = {
-    Courses: require('./Course'),
-    User: require('./user'),
-    seedGolf: require('./seed')
-}
+module.exports = router

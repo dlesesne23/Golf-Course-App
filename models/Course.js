@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const geocoder = require('../utility/geocoder')
 
 const CourseSchema = new mongoose.Schema({
     courseId: {
@@ -13,7 +12,7 @@ const CourseSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    location: {
+    address: {
         type: String,
         required: true
     },
@@ -31,10 +30,6 @@ const CourseSchema = new mongoose.Schema({
     }
 })
 
-// Geocode and create location
-CourseSchema.pre('save', async function (next) {
-    const loc = await geocoder.geocode(this.location)
-    console.log(loc)
-})
+
 
 module.exports = mongoose.model('Course', CourseSchema)
