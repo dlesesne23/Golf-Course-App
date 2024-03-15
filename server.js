@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(express.json())
 app.use(session({
-    secret: process.env.SECRET_KEY, // use to scramble the cookie
+    secret: process.env.SECRET_KEY, 
     resave: false,
     saveUninitialized: false
 }))
@@ -34,8 +34,8 @@ app.use('/courses', coursesController)
 app.use('/users', userController)
 app.use('/sessions', sessionController)
 
-app.get('/', (req, res) => {
-    res.render('course-home')
+app.get('/', function (req, res) {
+    res.redirect('/courses')
 })
 
 app.get('*', function (req, res) {

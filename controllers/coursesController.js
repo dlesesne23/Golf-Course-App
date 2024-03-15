@@ -9,12 +9,26 @@ const db = require('../models')
 router.get('/', (req, res) => {
     console.log(req.session)
     db.Course.find({ user: req.session.currentUser._id }).then((courses) => {
-        res.render('course-home', {
-            courses: courses,
-            currentUser: req.session.currentUser
-        })
-    })
+      res.render("golf-profile", { 
+          courses: courses,
+          currentUser: req.session.currentUser
+       });
+    });
 })
+
+
+
+// Show
+router.get("/:id", function (req, res) {
+    db.Course.findById(req.params.id)
+      .then((courses) => {
+        res.render("golf-show", {
+          courses: courses,
+          currentUser: req.session.currentUser 
+        });
+      })
+      .catch(() => res.render("404"));
+  });
 
 
 

@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const db = require('../models')
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
 
 // 1) New User form
 router.get('/new', (req, res) => {
