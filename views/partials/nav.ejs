@@ -1,12 +1,25 @@
 <header>
-    <h1>Golf Course Locator</h1>
+    <h1>Courses</h1>
     <nav>
-        <ul>
-            <!-- <li><a href="/">Home</a></li> -->
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About us</a></li>
-            <li><a href="/golf/new">Find Your Course</a></li>
-            <!-- <li><a href="/applications">My Applications</a></li> -->
-        </ul>
+      <ul>
+        <!-- <li><a href="/">Home</a></li> -->
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About us</a></li>
+        <% if(currentUser){ %>
+        <li>Welcome <%= currentUser.username %></li>
+        <li><a href="/fruits/new">Add New Course</a></li>
+        <li>
+          <form action="/sessions/?_method=DELETE" method="POST">
+            <input type="submit" value="Logout" />
+          </form>
+        </li>
+  
+        <% } else { %>
+        <li><a href="/users/new">Sign Up</a></li>
+        <li><a href="/session/new">Sign In</a></li>
+  
+        <% } %>
+        <!-- <li><a href="/applications">My Applications</a></li> -->
+      </ul>
     </nav>
-</header>
+  </header>
