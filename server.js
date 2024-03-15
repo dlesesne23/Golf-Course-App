@@ -12,11 +12,12 @@ const db = require('./models')
 
 const coursesController = require('./controllers/coursesController')
 const userController = require('./controllers/userController')
-const sessionController = require('./controllers/sessionController')
+const sessionController = require('./controllers/sessionController.js')
 
 const app = express()
 
-
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 //Middleware
 app.use(express.static('public'))
@@ -34,7 +35,7 @@ app.use('/users', userController)
 app.use('/sessions', sessionController)
 
 app.get('/', (req, res) => {
-    res.send('Hello World')
+    res.render('course-home')
 })
 
 app.get('*', function (req, res) {

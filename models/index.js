@@ -13,5 +13,5 @@ db.on('connected', function () {
 
 module.exports = {
     Course: require('./Course'),
-    user: require('./user'),
+    User: require('./user'),
 }
