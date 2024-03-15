@@ -9,13 +9,18 @@ router.use(isAuthenticated)
 // Index
 router.get('/', (req, res) => {
     console.log(req.session)
-    db.Course.find({ user: req.session.currentUser._id }).then((courses) => {
-      res.render("golf-profile", { 
-          courses: courses,
+    db.Course.find({ user: req.session.currentUser._id }).then((course) => {
+      res.render("course-home", { 
+          course: course,
           currentUser: req.session.currentUser
        });
     });
 })
+
+// NEW
+router.get("/new", (req, res) => {
+  res.render("new-course", { currentUser: req.session.currentUser });
+});
 
 // CREATE New Course
 router.post('/', async (req, res) => {
@@ -24,17 +29,17 @@ router.post('/', async (req, res) => {
   // courses.push(newCourse)
   req.body.user = req.session.currentUser.id
   console.log(req.session)
-  await db.Course.create(req.body).then((courses) =>
-  res.redirect("/courses/" + courses._id)
+  await db.Course.create(req.body).then((course) =>
+  res.redirect("/courses/" + course._id)
 );
 })
 
 // Show
 router.get("/:id", function (req, res) {
     db.Course.findById(req.params.id)
-      .then((courses) => {
-        res.render("golf-show", {
-          courses: courses,
+      .then((course) => {
+        res.render("course-details", {
+          course: course,
           currentUser: req.session.currentUser 
         });
       })
