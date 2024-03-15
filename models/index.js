@@ -1,8 +1,17 @@
 const express = require('express')
-const router = express.Router()
-const coursesController = require('../controllers/coursesController')
-const userController = require('../controllers/userController')
 
-router.get('/', coursesController.getCourses)
+require('dotenv').config()
+const mongoose = require('mongoose')
+mongoose.connect(process.env.MONGODBURI)
+const db = mongoose.connection
 
-module.exports = router
+
+db.on('connected', function () {
+    console.log(`Connected to ${db.name} at ${db.host} on port ${db.port}`)
+})
+
+
+module.exports = {
+    Course: require('./Course'),
+    user: require('./user'),
+}
