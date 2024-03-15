@@ -10,7 +10,7 @@
         <h2>Edit a Course</h2>
     </section>
 
-    <form method="POST" action="/fruits/<%= fruit._id %>?_method=PUT">
+    <form method="POST" action="/courses/<%= course._id %>?_method=PUT">
         <label for="courseId">Course Id</label>
         <input type="number" name="courseId" id="courseId" value="<%= course.name %>" required>
         <br>

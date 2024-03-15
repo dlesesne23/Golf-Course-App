@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
   console.log(req.body)
   const newCourse = (req.body)
   // courses.push(newCourse)
-  req.body.user = req.session.currentUser.id
+  req.body.user = req.session.currentUser._id
   console.log(req.session)
   await db.Course.create(req.body).then((course) =>
   res.redirect("/courses/" + course._id)
@@ -48,7 +48,7 @@ router.get("/:id", function (req, res) {
 
   // EDIT
   router.get("/:id/edit", (req, res) => {
-    db.Fruit.findById(req.params.id).then((course) => {
+    db.Course.findById(req.params.id).then((course) => {
       res.render("edit-course", {
         course: course,
         currentUser: req.session.currentUser 
