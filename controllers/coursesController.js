@@ -44,6 +44,31 @@ router.get("/:id", function (req, res) {
         });
       })
       .catch(() => res.render("404"));
+  })
+
+  // EDIT
+  router.get("/:id/edit", (req, res) => {
+    db.Fruit.findById(req.params.id).then((course) => {
+      res.render("edit-course", {
+        course: course,
+        currentUser: req.session.currentUser 
+      });
+    });
+  });
+
+  // UPDATE
+  router.put("/:id", async (req, res) => {
+    req.body.readyToEat = req.body.readyToEat === "on" ? true : false;
+    await db.Course.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(
+      (course) => res.redirect("/courses/" + course._id)
+    );
+  });
+
+  // DELETE
+  router.delete("/:id", async (req, res) => {
+    await db.Course.findByIdAndDelete(req.params.id).then(() =>
+      res.redirect("/courses")
+    );
   });
 
 

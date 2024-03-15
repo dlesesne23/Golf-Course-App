@@ -1,0 +1,36 @@
+<head>
+    <%- include('./partials/header.ejs', {title: `Edit ${course.name} | Courses`}) %>
+    <link rel="stylesheet" href="/css/forms.css">
+</head>
+
+<body>
+    <%- include('./partials/nav.ejs') %>
+
+    <section class="hero">
+        <h2>Edit a Course</h2>
+    </section>
+
+    <form method="POST" action="/fruits/<%= fruit._id %>?_method=PUT">
+        <label for="courseId">Course Id</label>
+        <input type="number" name="courseId" id="courseId" value="<%= course.name %>" required>
+        <br>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<%= course.name %>" required>
+        <br>
+        <label for="address">Address:</label>
+        <input type="text" name="address" id="address" value="<%= course.address %>" required>
+        <br>
+        <label for="difficultyLevel">Difficulty Level 1-10</label>
+        <input type="number" name="difficultyLevel" id="difficultyLevel" value="<%= course.difficultyLevel %>" required>
+        <br>
+        <label for="courseRating">Course Rating 1-10</label>
+        <input type="number" name="courseRating" id="courseRating" value="<%= course.courseRating %>" required>
+        <br>
+        <label for="courseDescription">Course Description</label>
+        <input type="text" name="courseDescription" id="courseDescription" value="<%= course.courseDescription %>" required>
+       
+        <input type="submit" value="Edit Course">
+    </form>
+
+    <%- include('./partials/footer.ejs') %>
+</body>
