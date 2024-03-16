@@ -4,7 +4,7 @@
       <ul>
         <!-- <li><a href="/">Home</a></li> -->
         <li><a href="/">Home</a></li>
-        <li><a href="/courses/show">About us</a></li>
+        <li><a href="/">About us</a></li>
         <% if(currentUser){ %>
         <li>Welcome <%= currentUser.username %></li>
         <li><a href="/courses/new">Add New Course</a></li>
@@ -16,7 +16,7 @@
   
         <% } else { %>
         <li><a href="/users/new">Sign Up</a></li>
-        <li><a href="/session/new">Sign In</a></li>
+        <li><a href="/sessions/new">Sign In</a></li>
   
         <% } %>
         <!-- <li><a href="/applications">My Applications</a></li> -->
