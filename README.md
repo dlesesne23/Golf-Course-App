@@ -1,8 +1,8 @@
 # Golf-Course-Locator
-This system locates and rates golf courses in your area based off of previous reviews, difficulty of the course, and average price per round
+This system lets you track and rate golf courses that you have played.
 
 # How It Works
-This app will locate the best golf courses for avid golfers of all skill levels. Simply sign up (It's free!) and enter the location you want to play golf at, the app will give you a list of golf courses to choose from based on golf course difficulty level, price, and overall quality of the course. All you need to do is choose one, and make a tee time at their website, which will be linked.
+In this app, you can add and track the courses you have played and how you did on them. You can imput the difficulty, the address, give it an overall score, and describe your experience. Simply sign up (It's free!) and start tracking your courses.
 
 ## MVP Goals
 My MVP goal is to have the app fully functional based on the above description. I would like to be able to let people create an account and have the app store their information. I would like to be able to pull from a golf course API and use that to properly locate the courses based off of the users location
